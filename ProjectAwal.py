@@ -35,8 +35,20 @@ if "#" in Nama:
         elif(InputBuyer == "2"):
             print(f"Saldo: {JumlahUang}")
             print("Tidak tersedia perusahaan IPO")
+            break
+
+elif "*" in Nama :
+    DashboardS = ("Dashboard Seller\n"
+                "Pilih salah satu\n"
+                "1. Penjualan\n"
+                "2. Portofolio\n"
+                "3. Cancel")
+    InputSeller = str(input("Pilih salah satu: "))
+    while(InputSeller != 3):
+        if (InputSeller == 1):
+            KodePerusahaanS = str(input("Masukkan kode perusahaan : "))
+
             
-elif "*" in Nama : pass
 elif "%" in Nama :  
 
     kodePerusahaanArr = []
@@ -45,7 +57,7 @@ elif "%" in Nama :
 
     while i < jumlahPerusahaan:
 
-        KodePerusahaan = str(input(""))
+        KodePerusahaan = str(input("Masukkan Kode Perusahaan: "))
 
         if "$" in KodePerusahaan:
             kodePerusahaanArr.append(KodePerusahaan)
@@ -78,6 +90,7 @@ elif "%" in Nama :
     sumLembarSaham = []
     HargaSaham = 1 #Asumsi Harga saham semua perusahaan = 1 karena disini tidak ada data harga saham
     LembarSaham = 0
+    KodePerusahaanBeli = []
 
     Dashboard = str("Dashboard Buyer\n"
                     "Pilih salah satu\n"
@@ -111,8 +124,9 @@ elif "%" in Nama :
                         while(JumlahPembelian>JumlahUang):
                             print("Jumlah Pembelian Invalid!")
                             JumlahPembelian = int(input("Jumlah Pembelian: "))
-                        LembarSaham = JumlahPembelian/HargaSaham
+                        LembarSaham = JumlahPembelian/hargaIPO
                         sumLembarSaham[i] = sumLembarSaham[i] + LembarSaham
+                        KodePerusahaanBeli.append(Kode)
         
             elif(Kode not in KodePerusahaan):
                 print("Masukkan kode perushaan yang tersedia")
@@ -123,5 +137,32 @@ elif "%" in Nama :
                 f"Jumlah lembar saham yang dipunya: {sumLembarSaham}\n")
             print(f"\n{Dashboard}")
             InputBuyer = str(input())
+
+    DashboardS = ("Dashboard Seller\n"
+            "Pilih salah satu\n"
+            "1. Penjualan\n"
+            "2. Portofolio\n"
+            "3. Cancel")
+
+    InputSeller = str(input("Pilih salah satu: "))
+
+    while(InputSeller != 3):
+        if (InputSeller == 1):
+            KodePerusahaanS = str(input("Masukkan kode perusahaan : "))
+
+            if (KodePerusahaanS in KodePerusahaanBeli):
+                lembarDijual = int(input("Masukkan lembar yang akan dijual: "))
+                if(lembarDijual > LembarSaham):
+                    print("Lembar saham tak cukup")
+                elif(lembarDijual < LembarSaham):
+                    lembarDijualS = LembarSaham - lembarDijual
+                else : 
+                    lembarDijualS = 0
+            
+            elif (KodePerusahaanS not in KodePerusahaanBeli):
+                print("Kamu tidak memiliki saham perusahan tersebut!")
+            
+            
+
                     
 else : pass
