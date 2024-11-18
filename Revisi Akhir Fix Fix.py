@@ -1,3 +1,11 @@
+#Kamus
+# total_balance, topup_amount, price_per_share, quantity_to_buy, total_cost, num_stocks, index, sale_amount, seller_choice : int
+# home, home_input, user_id, user_name, user_choice, stock_code, dashboard, dashboard_seller, stock_code_to_sell : str            
+# valid_id : bool
+# stock_codes, possible_ids : list[str]
+# stock_prices, stock_quantities, buyer_portfolio : list[int]
+
+#Codingan
 total_balance = 0  # Saldo total pengguna
 stock_codes = []  # Daftar kode saham
 stock_prices = []  # Daftar harga saham
